@@ -23,6 +23,7 @@
 import argparse
 import json
 import urllib2
+import urllib
 
 VERSION = "0.3.1"
 
@@ -97,7 +98,7 @@ def payload(args):
 
 
 def request(url, data):
-    req = urllib2.Request(url, data)
+    req = urllib2.Request(url, urllib.quote_plus(data))
     response = urllib2.urlopen(req)
     return response.read()
 
